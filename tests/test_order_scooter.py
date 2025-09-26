@@ -1,18 +1,13 @@
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
-from data import TestData
-from selenium import webdriver
+from locators.order_page_locators import OrderPageLocators
+from locators.base_page_locators import BasePageLocastors
+from data import FixData
 import pytest
 import allure
 
 @allure.title("Тестирование функционала - заказ Самоката")
-class TestOrderScooter:
-    driver = None
-    
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
-    
+class TestOrderScooter:  
     @pytest.mark.parametrize("user_data", [
         {
             "name": "Сергей",
@@ -28,16 +23,16 @@ class TestOrderScooter:
         }
     ])
     @allure.title('Делаем заказ на самокат, через кнопку заказать наверху сайта')
-    def test_order_scooter_with_button_in_top(self, user_data):
-        self.driver.get(TestData.url)
-        main_page = MainPage(self.driver)
+    def test_order_scooter_with_button_in_top(self, driver, user_data):
+        driver.get(FixData.url)
+        main_page = MainPage(driver)
         main_page.click_order_button_small()
-        order_page = OrderPage(self.driver)
+        order_page = OrderPage(driver)
         order_page.wait_for_header()
-        order_page.input_name_in_field(OrderPage.input_name, user_data["name"])
-        order_page.input_name_in_field(OrderPage.input_surname, user_data["surname"])
-        order_page.input_name_in_field(OrderPage.input_address, user_data["address"])
-        order_page.input_name_in_field(OrderPage.input_phone, user_data["phone"])
+        order_page.input_name_in_field(OrderPageLocators.input_name, user_data["name"])
+        order_page.input_name_in_field(OrderPageLocators.input_surname, user_data["surname"])
+        order_page.input_name_in_field(OrderPageLocators.input_address, user_data["address"])
+        order_page.input_name_in_field(OrderPageLocators.input_phone, user_data["phone"])
         order_page.click_to_choose_station()
         order_page.click_to_next_button()    
         order_page.wait_for_header()
@@ -49,21 +44,20 @@ class TestOrderScooter:
         order_page.wait_order_modal_header()
         assert order_page.find_text_in_success_order()[:14] == 'Заказ оформлен'
         order_page.click_check_status_button()
-        main_page.click_scooter_logo()
-        assert self.driver.current_url == TestData.url
+        main_page.click_logo(BasePageLocastors.scooter_logo)
+        assert driver.current_url == FixData.url
 
     @allure.title('Делаем заказ на самокат, через кнопку заказать внизу сайта')
-    def test_order_scooter_with_button_in_down(self):
-        main_page = MainPage(self.driver)
-        main_page.open_page(TestData.url)
-        main_page.wait_when_question_to_be_clickable(main_page.question0)
+    def test_order_scooter_with_button_in_down(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_page(FixData.url)
         main_page.click_order_button_big()
-        order_page = OrderPage(self.driver)
+        order_page = OrderPage(driver)
         order_page.wait_for_header()
-        order_page.input_name_in_field(OrderPage.input_name,'Сергей')
-        order_page.input_name_in_field(OrderPage.input_surname,'Иванов')
-        order_page.input_name_in_field(OrderPage.input_address,'Москва')
-        order_page.input_name_in_field(OrderPage.input_phone,'+7911123123')
+        order_page.input_name_in_field(OrderPageLocators.input_name,'Сергей')
+        order_page.input_name_in_field(OrderPageLocators.input_surname,'Иванов')
+        order_page.input_name_in_field(OrderPageLocators.input_address,'Москва')
+        order_page.input_name_in_field(OrderPageLocators.input_phone,'+7911123123')
         order_page.click_to_choose_station()
         order_page.click_to_next_button()    
         order_page.wait_for_header()
@@ -75,20 +69,20 @@ class TestOrderScooter:
         order_page.wait_order_modal_header()
         assert order_page.find_text_in_success_order()[:14] == 'Заказ оформлен'
         order_page.click_check_status_button()
-        main_page.click_scooter_logo()
-        assert self.driver.current_url == TestData.url
+        main_page.click_logo(BasePageLocastors.scooter_logo)
+        assert driver.current_url == FixData.url
 
     @allure.title('Проверяем, что при нажатии на логотип Яндекса, откроется страница Дзена')
-    def test_click_yandex_logo(self):
-        self.driver.get(TestData.url)
-        main_page = MainPage(self.driver)
-        main_window = self.driver.current_window_handle
-        main_page.click_yandex_logo()
-        all_windows = self.driver.window_handles
+    def test_click_yandex_logo(self, driver):
+        driver.get(FixData.url)
+        main_page = MainPage(driver)
+        main_window = driver.current_window_handle
+        main_page.click_logo(BasePageLocastors.yandex_logo)
+        all_windows = driver.window_handles
         new_window = [window for window in all_windows if window != main_window][0]
-        self.driver.switch_to.window(new_window)
-        main_page.wait_new_page_dzen(TestData.ya_url)
-        assert self.driver.current_url == TestData.ya_url
+        driver.switch_to.window(new_window)
+        main_page.wait_new_page(FixData.ya_url)
+        assert driver.current_url == FixData.ya_url
         
     @classmethod
     def teardown_class(cls):

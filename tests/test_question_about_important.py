@@ -11,8 +11,7 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question0)
-        main_page.click_sign_in_question_button(MainPageLocators.question0)
-        main_page.wait_for_load_response(MainPageLocators.answer0)
+        main_page.click_sign_in_question_button(MainPageLocators.question0, MainPageLocators.answer0)
         assert main_page.get_response_afer_click(MainPageLocators.answer0) == TestData.answer0
     
     @allure.title('Проверяем наличие ответа на 2 вопрос')
@@ -20,8 +19,7 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question1)
-        main_page.click_sign_in_question_button(MainPageLocators.question1)
-        main_page.wait_for_load_response(MainPageLocators.answer1)
+        main_page.click_sign_in_question_button(MainPageLocators.question1, MainPageLocators.answer1)
         assert main_page.get_response_afer_click(MainPageLocators.answer1) == TestData.answer1
 
     @allure.title('Проверяем наличие ответа на 3 вопрос')
@@ -29,8 +27,7 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question2)
-        main_page.click_sign_in_question_button(MainPageLocators.question2)
-        main_page.wait_for_load_response(MainPageLocators.answer2)
+        main_page.click_sign_in_question_button(MainPageLocators.question2, MainPageLocators.answer2)
         assert main_page.get_response_afer_click(MainPageLocators.answer2) == TestData.answer2
 
     @allure.title('Проверяем наличие ответа на 4 вопрос')
@@ -38,8 +35,7 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question3)
-        main_page.click_sign_in_question_button(MainPageLocators.question3)
-        main_page.wait_for_load_response(MainPageLocators.answer3)
+        main_page.click_sign_in_question_button(MainPageLocators.question3, MainPageLocators.answer3)
         assert main_page.get_response_afer_click(MainPageLocators.answer3) == TestData.answer3
 
     @allure.title('Проверяем наличие ответа на 5 вопрос')
@@ -47,8 +43,7 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question4)
-        main_page.click_sign_in_question_button(MainPageLocators.question4)
-        main_page.wait_for_load_response(MainPageLocators.answer4)
+        main_page.click_sign_in_question_button(MainPageLocators.question4, MainPageLocators.answer4)
         assert main_page.get_response_afer_click(MainPageLocators.answer4) == TestData.answer4
 
     @allure.title('Проверяем наличие ответа на 6 вопрос')
@@ -56,8 +51,7 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question5)
-        main_page.click_sign_in_question_button(MainPageLocators.question5)
-        main_page.wait_for_load_response(MainPageLocators.answer5)
+        main_page.click_sign_in_question_button(MainPageLocators.question5, MainPageLocators.answer5)
         assert main_page.get_response_afer_click(MainPageLocators.answer5) == TestData.answer5
 
     @allure.title('Проверяем наличие ответа на 7 вопрос')
@@ -65,8 +59,7 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question6)
-        main_page.click_sign_in_question_button(MainPageLocators.question6)
-        main_page.wait_for_load_response(MainPageLocators.answer6)
+        main_page.click_sign_in_question_button(MainPageLocators.question6, MainPageLocators.answer6)
         assert main_page.get_response_afer_click(MainPageLocators.answer6) == TestData.answer6
 
     @allure.title('Проверяем наличие ответа на 8 вопрос')
@@ -74,6 +67,5 @@ class TestQuestion:
         main_page = MainPage(driver)
         main_page.open_page(FixData.url)
         main_page.wait_when_question_to_be_clickable(MainPageLocators.question7)
-        main_page.click_sign_in_question_button(MainPageLocators.question7)
-        main_page.wait_for_load_response(MainPageLocators.answer7)
+        main_page.click_sign_in_question_button(MainPageLocators.question7, MainPageLocators.answer7)
         assert main_page.get_response_afer_click(MainPageLocators.answer7) == TestData.answer7

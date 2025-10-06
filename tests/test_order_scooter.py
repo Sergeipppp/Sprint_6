@@ -83,7 +83,3 @@ class TestOrderScooter:
         driver.switch_to.window(new_window)
         main_page.wait_new_page(FixData.ya_url)
         assert driver.current_url == FixData.ya_url
-        
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit()

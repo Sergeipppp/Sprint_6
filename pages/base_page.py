@@ -19,3 +19,7 @@ class BasePage:
     def open_page(self, page):
         self.driver.get(page)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def find_and_click_elements(self, element, response):
+        self.driver.find_element(*element).click()
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(response))

@@ -1,0 +1,21 @@
+from selenium.webdriver.common.by import By
+
+class MainPageLocators:
+    question0 = [By.ID, 'accordion__heading-0']
+    question1 = [By.ID, 'accordion__heading-1']
+    question2 = [By.ID, 'accordion__heading-2']
+    question3 = [By.ID, 'accordion__heading-3']
+    question4 = [By.ID, 'accordion__heading-4']
+    question5 = [By.ID, 'accordion__heading-5']
+    question6 = [By.ID, 'accordion__heading-6']
+    question7 = [By.ID, 'accordion__heading-7']
+    answer0 = [By.XPATH, ".//div[@id='accordion__panel-0']/p"]
+    answer1 = [By.XPATH, ".//div[@id='accordion__panel-1']/p"]
+    answer2 = [By.XPATH, ".//div[@id='accordion__panel-2']/p"]
+    answer3 = [By.XPATH, ".//div[@id='accordion__panel-3']/p"]
+    answer4 = [By.XPATH, ".//div[@id='accordion__panel-4']/p"]
+    answer5 = [By.XPATH, ".//div[@id='accordion__panel-5']/p"]
+    answer6 = [By.XPATH, ".//div[@id='accordion__panel-6']/p"]
+    answer7 = [By.XPATH, ".//div[@id='accordion__panel-7']/p"]
+    order_button_small = [By.XPATH, "//button[@class='Button_Button__ra12g']"]
+    order_button_big = [By.CSS_SELECTOR, "button.Button_Button__ra12g.Button_UltraBig__UU3Lp"]
